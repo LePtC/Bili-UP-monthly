@@ -1,0 +1,217 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7712,        209]
+NotebookOptionsPosition[      7270,        192]
+NotebookOutlinePosition[      7629,        208]
+CellTagsIndexPosition[      7586,        205]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<D:\\\\D\\\\\:97f3\:89c6\:9891\\\\B\:7ad9\:6708\:520a2019B\\\\\:6708\
+\:520a\\\\\:6da8\:7c89\:65e5\:699c\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "ref", ",", "input", ",", "output", ",", "Safe", ",", "GSafe", ",", "hex",
+      ",", "colorstring", ",", "good", ",", "data", ",", "up", ",", "face", 
+     ",", "pic"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "ref", "=", 
+     "\"\<E:\\\\GitHub\\\\AutoAni-2col\\\\mathematica \
+\:6570\:636e\:5904\:7406\:5408\:96c6\\\\data-8\:6708\:597d\:989c\:8272.csv\>\"\
+"}], ";", 
+    RowBox[{"(*", "\:53c2\:8003", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+    "input", "=", 
+     "\"\<D:\\\\D\\\\\:97f3\:89c6\:9891\\\\B\:7ad9\:6708\:520a2019B\\\\\:6570\
+\:636e\:4e0b\:8f7d\\\\data\:6da8\:7c89-yuedu.csv\>\""}], ";", 
+    RowBox[{"(*", "\:8f93\:5165", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+    "output", "=", 
+     "\"\<D:\\\\D\\\\\:97f3\:89c6\:9891\\\\B\:7ad9\:6708\:520a2019B\\\\\:6708\
+\:520a\\\\\:6da8\:7c89\:65e5\:699c\\\\data.csv\>\""}], ";", 
+    RowBox[{"(*", "\:8f93\:51fa", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Safe", "[", "p_", "]"}], ":=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "@", "p"}], ">", "0"}], ",", 
+       RowBox[{"p", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", "p"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"GSafe", "[", "p_", "]"}], ":=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "@", "p"}], "<", "1"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"p", ",", "p", ",", "p"}], "}"}], ",", "p"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"hex", "[", "color_RGBColor", "]"}], ":=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"\"\<0x\>\"", ",", 
+       RowBox[{"IntegerString", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"Level", "[", 
+            RowBox[{"color", ",", "1"}], "]"}], "*", "255"}], "]"}], ",", 
+         "16", ",", "2"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"colorstring", "[", "pic_", "]"}], ":=", 
+     RowBox[{"hex", "@", 
+      RowBox[{"Darker", "[", 
+       RowBox[{
+        RowBox[{"RGBColor", "[", 
+         RowBox[{"GSafe", "@", 
+          RowBox[{"ImageMeasurements", "[", 
+           RowBox[{
+            RowBox[{"Safe", "@", "pic"}], ",", "\"\<Mean\>\""}], "]"}]}], 
+         "]"}], ",", ".1"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"good", "=", 
+     RowBox[{"Association", "[", 
+      RowBox[{"Rule", "@@@", 
+       RowBox[{"Import", "[", "ref", "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"data", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"input", ",", 
+       RowBox[{"CharacterEncoding", "\[Rule]", "\"\<UTF-8\>\""}]}], "]"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"up", "=", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "col"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"data", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "col"}], "]"}], "]"}], ",", "face"}], "}"}], 
+        "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{
+             RowBox[{
+             "\"\<https://api.bilibili.com/x/web-interface/card?mid=\>\"", "<>", 
+              RowBox[{"ToString", "[", "up", "]"}]}], ",", 
+             "\"\<RAWJSON\>\""}], "]"}], "[", 
+           RowBox[{"\"\<data\>\"", ",", "\"\<card\>\"", ",", "#"}], "]"}], 
+          "&"}], "/@", 
+         RowBox[{"{", 
+          RowBox[{"\"\<name\>\"", ",", "\"\<face\>\""}], "}"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pic", "=", 
+        RowBox[{"Import", "[", "face", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"data", "\[LeftDoubleBracket]", 
+         RowBox[{"3", ",", "col"}], "\[RightDoubleBracket]"}], "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"KeyExistsQ", "[", 
+           RowBox[{"good", ",", "up"}], "]"}], ",", 
+          RowBox[{"good", "[", "up", "]"}], ",", 
+          RowBox[{"colorstring", "[", "pic", "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Image`ImportExportDump`ImageWritePNG", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ToString", "[", "up", "]"}], "<>", "\"\<.png\>\""}], ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Min", "@", 
+             RowBox[{"ImageDimensions", "@", 
+              RowBox[{"Safe", "[", "pic", "]"}]}]}], ">", "240"}], ",", 
+           RowBox[{"ImageResize", "[", 
+            RowBox[{"pic", ",", "240"}], "]"}], ",", "pic"}], "]"}]}], "]"}], 
+       ";"}], 
+      RowBox[{
+      "(*", "\:56fe\:50cf\:81ea\:52a8\:8f93\:51fa\:5728\:540c\:76ee\:5f55", 
+       "*)"}], "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"col", ",", "2", ",", 
+        RowBox[{
+         RowBox[{"Count", "[", 
+          RowBox[{
+           RowBox[{"data", "[", 
+            RowBox[{"[", 
+             RowBox[{"-", "1"}], "]"}], "]"}], ",", "_Integer"}], "]"}], "+", 
+         "1"}]}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"BinaryWrite", "[", 
+     RowBox[{"output", ",", 
+      RowBox[{"StringDelete", "[", 
+       RowBox[{
+        RowBox[{"ExportString", "[", 
+         RowBox[{"data", ",", "\"\<CSV\>\""}], "]"}], ",", "\"\<\\\"\>\""}], 
+       "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Close", "[", "output", "]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.765711254861621*^9, 3.7657112815441976`*^9}, {
+  3.7657123410015554`*^9, 3.765712345063055*^9}, {3.7657126017710543`*^9, 
+  3.7657126028443937`*^9}, {3.7670663744160237`*^9, 3.7670663755583243`*^9}, {
+  3.768695732749484*^9, 3.768695928351183*^9}, {3.769659750810012*^9, 
+  3.769659755335908*^9}, {3.769662696158205*^9, 3.7696627287807884`*^9}, {
+  3.7696627734433155`*^9, 3.7696628137265425`*^9}},
+ CellLabel->
+  "In[154]:=",ExpressionUUID->"48a92ef0-db3b-416e-b3d6-361ecbbacfbd"],
+
+Cell[BoxData["\<\"D:\\\\D\\\\\:97f3\:89c6\:9891\\\\B\:7ad9\:6708\:520a2019B\\\
+\\\:6708\:520a\\\\\:6da8\:7c89\:65e5\:699c\\\\data.csv\"\>"], "Output",
+ CellChangeTimes->{3.769663109990049*^9},
+ CellLabel->
+  "Out[155]=",ExpressionUUID->"a72cf8a7-3b65-4133-86e8-978ca6809228"]
+}, Open  ]]
+},
+WindowSize->{2560, 1259},
+WindowMargins->{{-16, Automatic}, {Automatic, -16}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (2019\:5e744\:67088\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6396, 161, 2287, "Input",ExpressionUUID->"48a92ef0-db3b-416e-b3d6-361ecbbacfbd"],
+Cell[6979, 185, 275, 4, 135, "Output",ExpressionUUID->"a72cf8a7-3b65-4133-86e8-978ca6809228"]
+}, Open  ]]
+}
+]
+*)
+
